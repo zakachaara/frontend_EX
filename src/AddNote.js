@@ -6,8 +6,8 @@ const AddNote = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        nomDuCours: "",
-        valeurDeNote: "",
+        nom_module: "",
+        note: "",
     });
 
     const handleChange = (e) => {
@@ -35,7 +35,7 @@ const AddNote = () => {
                     <label>Nom du Cours :</label>
                     <input
                         type="text"
-                        name="nomDuCours"
+                        name="nom_module"
                         value={formData.nom_module}
                         onChange={handleChange}
                         required
@@ -45,7 +45,7 @@ const AddNote = () => {
                     <label>Valeur de la Note :</label>
                     <input
                         type="number"
-                        name="valeurDeNote"
+                        name="note"
                         value={formData.note}
                         onChange={handleChange}
                         required

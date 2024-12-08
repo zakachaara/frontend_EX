@@ -10,7 +10,7 @@ const EtudiantDetails = () => {
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const etudiantResponse = await axios.get(`http://localhost:8080/students/${id}/grades`);
+                const etudiantResponse = await axios.get(`http://localhost:8080/students/${id}`);
                 setEtudiant(etudiantResponse.data);
 
                 const notesResponse = await axios.get(`http://localhost:8080/students/${id}/grades`);
@@ -37,12 +37,12 @@ const EtudiantDetails = () => {
                         <tr
                             key={note.id}
                             style={{
-                                backgroundColor: note.valeurDeNote > 10 ? "green" : "red",
+                                backgroundColor: note.note > 10 ? "green" : "red",
                                 color: "white",
                             }}
                         >
-                            <td>{note.nomDuCours}</td>
-                            <td>{note.valeurDeNote}</td>
+                            <td>{note.nom_module}</td>
+                            <td>{note.note}</td>
                         </tr>
                     ))}
                 </tbody>
