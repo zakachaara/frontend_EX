@@ -17,11 +17,11 @@ const AddNote = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:8080/notes", {
+            await axios.post(`http://localhost:8080/students/${id}/grades/`, {
                 ...formData,
                 idEtudiant: id,
             });
-            navigate(`/etudiants/${id}`);
+            navigate(`/students/${id}`);
         } catch (error) {
             console.error("Erreur lors de l'ajout de la note :", error);
         }

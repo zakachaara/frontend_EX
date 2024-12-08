@@ -8,7 +8,7 @@ const Etudiants = () => {
     useEffect(() => {
         const fetchEtudiants = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/etudiants");
+                const response = await axios.get("http://localhost:8080/students");
                 setEtudiants(response.data);
             } catch (error) {
                 console.error("Erreur lors de la récupération des étudiants :", error);
