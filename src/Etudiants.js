@@ -9,7 +9,6 @@ const Etudiants = () => {
         const fetchEtudiants = async () => {
             try {
                 const response = await axios.get("http://localhost:8080/students/");
-                console.log(response.data);
                 setEtudiants(response.data);
             } catch (error) {
                 console.error("Erreur lors de la récupération des étudiants :", error);
@@ -33,7 +32,7 @@ const Etudiants = () => {
                     {etudiants.map((etudiant) => (
                         <tr key={etudiant.id}>
                             <td><Link to={`/etudiants/${etudiant.id}`}> {etudiant.name} </Link></td>
-                            <td>{new Date(etudiant.creationDate).toLocaleDateString()}</td>
+                            <td>{new Date(etudiant.creationDate).toLocaleString()}</td>
                             <td>
                                 {etudiant.meanGrade}
                             </td>
@@ -41,6 +40,7 @@ const Etudiants = () => {
                     ))}
                 </tbody>
             </table>
+            <Link to={`/etudiants/add-etudiant`}>Ajouter un Etudiant</Link>
         </div>
     );
 };
