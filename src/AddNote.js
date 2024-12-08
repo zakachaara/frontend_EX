@@ -41,6 +41,7 @@ const AddNote = () => {
                         required
                     />
                 </div>
+                <br></br>
                 <div>
                     <label>Valeur de la Note :</label>
                     <input
@@ -51,6 +52,7 @@ const AddNote = () => {
                         required
                     />
                 </div>
+                <br></br>
                 <button type="submit">Ajouter</button>
             </form>
         </div>

@@ -33,14 +33,19 @@ const Etudiants = () => {
                         <tr key={etudiant.id}>
                             <td><Link to={`/etudiants/${etudiant.id}`}> {etudiant.name} </Link></td>
                             <td>{new Date(etudiant.creationDate).toLocaleString()}</td>
-                            <td>
+                            <td style={{
+                                backgroundColor: etudiant.meanGrade > 10 ? "green" : "red",
+                                color: "white",
+                            }}>
                                 {etudiant.meanGrade}
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <Link to={`/etudiants/add-etudiant`}>Ajouter un Etudiant</Link>
+            <div className="AddStudent">
+                <Link to={`/etudiants/add-etudiant`}>Ajouter un Etudiant</Link>
+            </div>
         </div>
     );
 };

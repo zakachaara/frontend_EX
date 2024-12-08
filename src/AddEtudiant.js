@@ -29,7 +29,7 @@ const AddEtudiant = () => {
     };
 
     return (
-        <div>
+        <div >
             <h1>Ajouter un Etudiant</h1>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -42,7 +42,7 @@ const AddEtudiant = () => {
                         required
                     />
                 </div>
-                
+                <br></br>
                 <button type="submit">Ajouter</button>
             </form>
         </div>

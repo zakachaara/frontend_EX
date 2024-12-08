@@ -36,18 +36,20 @@ const EtudiantDetails = () => {
                     {notes.map((note) => (
                         <tr
                             key={note.id}
-                            style={{
-                                backgroundColor: note.note > 10 ? "green" : "red",
-                                color: "white",
-                            }}
+                            
                         >
                             <td>{note.nom_module}</td>
-                            <td>{note.note}</td>
+                            <td style={{
+                                backgroundColor: note.note > 10 ? "green" : "red",
+                                color: "white",
+                            }} >{note.note}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <Link to={`/etudiants/${id}/add-note`}>Ajouter une Note</Link>
+            <div className="AddStudent">
+                <Link to={`/etudiants/${id}/add-note`}>Ajouter une Note</Link>
+            </div>
         </div>
     );
 };
