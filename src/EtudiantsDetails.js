@@ -10,7 +10,7 @@ const EtudiantDetails = () => {
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const etudiantResponse = await axios.get(`http://localhost:8080/students/${id}`);
+                const etudiantResponse = await axios.get(`http://localhost:8080/students/${id}/grades`);
                 setEtudiant(etudiantResponse.data);
 
                 const notesResponse = await axios.get(`http://localhost:8080/students/${id}/grades`);
@@ -24,7 +24,7 @@ const EtudiantDetails = () => {
 
     return (
         <div>
-            <h1>Détails de l'Étudiant : {etudiant.nom}</h1>
+            <h1>Détails de l'Étudiant : {etudiant.name}</h1>
             <table>
                 <thead>
                     <tr>

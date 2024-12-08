@@ -17,11 +17,11 @@ const AddNote = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(`http://localhost:8080/students/${id}/grades/`, {
+            await axios.post(`http://localhost:8080/students/${id}/grades`, {
                 ...formData,
                 idEtudiant: id,
             });
-            navigate(`/students/${id}`);
+            navigate(`/etudiants/${id}`);
         } catch (error) {
             console.error("Erreur lors de l'ajout de la note :", error);
         }
@@ -36,7 +36,7 @@ const AddNote = () => {
                     <input
                         type="text"
                         name="nomDuCours"
-                        value={formData.nomDuCours}
+                        value={formData.nom_module}
                         onChange={handleChange}
                         required
                     />
@@ -46,7 +46,7 @@ const AddNote = () => {
                     <input
                         type="number"
                         name="valeurDeNote"
-                        value={formData.valeurDeNote}
+                        value={formData.note}
                         onChange={handleChange}
                         required
                     />

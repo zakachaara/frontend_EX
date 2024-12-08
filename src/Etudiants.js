@@ -8,7 +8,8 @@ const Etudiants = () => {
     useEffect(() => {
         const fetchEtudiants = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/students");
+                const response = await axios.get("http://localhost:8080/students/");
+                console.log(response.data);
                 setEtudiants(response.data);
             } catch (error) {
                 console.error("Erreur lors de la récupération des étudiants :", error);
@@ -31,10 +32,10 @@ const Etudiants = () => {
                 <tbody>
                     {etudiants.map((etudiant) => (
                         <tr key={etudiant.id}>
-                            <td>{etudiant.nom}</td>
-                            <td>{new Date(etudiant.dateDeCreation).toLocaleDateString()}</td>
+                            <td><Link to={`/etudiants/${etudiant.id}`}> {etudiant.name} </Link></td>
+                            <td>{new Date(etudiant.creationDate).toLocaleDateString()}</td>
                             <td>
-                                <Link to={`/etudiants/${etudiant.id}`}>Voir Détails</Link>
+                                {etudiant.meanGrade}
                             </td>
                         </tr>
                     ))}
