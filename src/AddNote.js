@@ -17,7 +17,7 @@ const AddNote = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(`http://localhost:8080/students/${id}/grades`, {
+            await axios.post(`http://studnet-backend:8080/students/${id}/grades`, {
                 ...formData,
                 idEtudiant: id,
             });

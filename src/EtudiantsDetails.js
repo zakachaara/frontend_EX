@@ -10,10 +10,10 @@ const EtudiantDetails = () => {
     useEffect(() => {
         const fetchDetails = async () => {
             try {
-                const etudiantResponse = await axios.get(`http://localhost:8080/students/${id}`);
+                const etudiantResponse = await axios.get(`http://studnet-backend:8080/students/${id}`);
                 setEtudiant(etudiantResponse.data);
 
-                const notesResponse = await axios.get(`http://localhost:8080/students/${id}/grades`);
+                const notesResponse = await axios.get(`http://studnet-backend:8080/students/${id}/grades`);
                 setNotes(notesResponse.data);
             } catch (error) {
                 console.error("Erreur lors de la récupération des détails :", error);
