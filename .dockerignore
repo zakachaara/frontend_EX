@@ -1,0 +1,10 @@
+node_modules
+
+*.log
+
+.vscode/
+
+.git
+.gitignore
+
+Dockerfile
