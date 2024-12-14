@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Frontend Application for Student Management
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a frontend application built with React and configured to communicate with a backend server. It is containerized using Docker and served using Nginx. The application allows users to manage students and their grades through a user-friendly interface.
 
-## Available Scripts
+## Project Structure
 
-In the project directory, you can run:
+- **public/**: Contains static assets for the application.
+- **src/**: Contains the main source code for the React application, including components and configuration files.
+- **.dockerignore**: Specifies files and directories to exclude when building the Docker image.
+- **.gitignore**: Specifies files and directories to exclude from Git version control.
+- **Dockerfile**: Defines the instructions to build the Docker image for this frontend application.
+- **README.md**: Provides an overview and instructions for the project.
+- **nginx.conf.template**: Template configuration file for Nginx, used to route requests to the backend server and serve the React application.
+- **package-lock.json**: Automatically generated file that locks the versions of the project’s dependencies.
+- **package.json**: Contains metadata about the project, including its dependencies and scripts.
 
-### `npm start`
+## Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Student Management**: Manage student records, including adding, editing, and deleting students.
+- **Grade Management**: View and manage grades for individual students.
+- **Nginx Configuration**: Uses Nginx to serve the React application and proxy API requests to the backend.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Prerequisites
 
-### `npm test`
+- Docker installed on your machine.
+- A backend server running and accessible in the same Docker network.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How to Build and Run
 
-### `npm run build`
+### Building the Docker Image
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Build the Docker image using the provided Dockerfile:
+   ```bash
+   docker build -t frontend-app .
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Running the Container
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Run the container, ensuring it is connected to the same Docker network as the backend:
+   ```bash
+   docker run -d --name frontend-app --network your-docker-network -p 8081:80 -e BACKEND_URL="http://studnet-backend:8080" frontend-app
+   ```
 
-### `npm run eject`
+### Accessing the Application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Open your browser and navigate to:
+   ```
+   http://<host-ip>:8081
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Notes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- The `BACKEND_URL` environment variable can be used to dynamically specify the backend server URL. Ensure that the backend container is named correctly in the Docker network (e.g., `studnet-backend`).
+- The default Nginx configuration assumes the backend API is accessible at `/students/` and related endpoints.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Troubleshooting
 
-## Learn More
+- **Requests Sent to Wrong Port**: Verify the `nginx.conf.template` and ensure the correct `proxy_pass` URL is set.
+- **Docker Network Issues**: Ensure both the frontend and backend containers are on the same Docker network.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##
