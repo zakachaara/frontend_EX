@@ -1,0 +1,34 @@
+services:
+  MysqlDatabase:
+    image: mysql:9.1.0-oracle
+    container_name: MySQL-database  
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: p@ssw@rdr@@t  
+      MYSQL_DATABASE: exdb          
+      MYSQL_USER: tester                  
+      MYSQL_PASSWORD: t@st@r2@       
+    ports:
+      - "3306:3306"  
+    volumes:
+      - storageVol:/var/lib/mysql
+      - storageConfigVol:/etc/mysql
+        
+  studnet-backend :
+    image : 192.168.56.102:5000/studnet-backend:1.0
+    container_name: studnet-backend
+    depends_on :
+      - MysqlDatabase
+    ports :
+      - "8080:8080"
+  studnet-frontend :
+    image : 192.168.56.102:5000/studnet-frontend:1.0
+    container_name: studnet-frontend 
+    depends_on :
+      - studnet-backend
+    ports :
+      - "3000:80"
+
+volumes:
+  storageVol: 
+  storageConfigVol:  
